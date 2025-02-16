@@ -28,7 +28,7 @@
 
 <body>
     
-    <div class="m-main">
+    <div class="m-main" style="display: none;">
 		<div class="player">
 			<a href="javascript:void(0)" rel="external nofollow" rel="external nofollow" id="js-play">
 				<img src="./img/开始.png" alt="" id="img1"/>
@@ -47,7 +47,7 @@
 			</div>
 		</div>
 		<div class="video">
-			<video controls autoplay name="media" id="js-video"><source src="./mp3/你的九儿 - 桃花朵朵开.mp3" type="video/mp4"></video>
+			<video controls autoplay name="media" id="js-video"><source src="./mp3/你的九儿 - 桃花朵朵开.mp3" type="audio/mpeg"></video>
 		</div>
 	</div>
     <!-- <div class="m-main">
@@ -75,6 +75,19 @@
         </div>
     </div>
     <script>
+	$(document).ready(function () {
+            // 获取音频元素
+            var audio = document.getElementById('js-video');
+
+            // 监听页面的点击事件
+            $(document).on('click', function () {
+                // 播放音频
+                audio.play().catch(function (error) {
+                    console.error('播放失败:', error);
+                });
+            });
+        });
+	    
         $(function () {
             AudioControl('js-video');
 
